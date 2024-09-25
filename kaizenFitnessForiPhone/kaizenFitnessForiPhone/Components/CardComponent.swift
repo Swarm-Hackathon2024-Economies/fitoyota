@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct CardComponent: View {
+    var menu: String
+    var mile: String
+    var minute: String
+    var point: String
+
+
     var body: some View {
         VStack {
             VStack {
@@ -24,28 +30,41 @@ struct CardComponent: View {
                     .padding(.bottom, 10)
             }
             .background(Color(red: 1, green: 0.37, blue: 0.23, opacity: 0.7))
-            VStack {
-                Text("Relax")
+            .clipShape(.rect(
+                topLeadingRadius: 16,
+                bottomLeadingRadius: 0,
+                bottomTrailingRadius: 0,
+                topTrailingRadius: 16
+            ))
+
+
+
+            VStack(spacing: 10) {
+                Text(self.menu)
+                    .bold()
                 Image(systemName: "figure.yoga")
-                HStack {
-                    VStack {
+                HStack(spacing: 25) {
+                    VStack(spacing: 5) {
                         Image(systemName: "mappin.circle")
-                        Text("9.32")
+                        Text(self.mile)
+                            .bold()
                         Text("miles")
                     }
-                    VStack {
+                    VStack(spacing: 5) {
                         Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
-                        Text("14")
+                        Text(self.minute)
+                            .bold()
                         Text("minutes")
                     }
-                    VStack {
+                    VStack(spacing: 5) {
                         Image(systemName: "heart.fill")
-                        Text("30")
+                        Text(self.point)
+                            .bold()
                         Text("point")
                     }
                 }
                 Button {
-                    
+
                 } label: {
                     HStack {
                         Image(systemName: "paperplane")
@@ -54,7 +73,7 @@ struct CardComponent: View {
                     .primaryButtonStyle()
                 }
                 Button {
-                    
+
                 } label: {
                     HStack {
                         Text("View detail")
@@ -73,5 +92,5 @@ struct CardComponent: View {
 }
 
 #Preview {
-    CardComponent()
+    CardComponent(menu: "Relax", mile: "9.32", minute: "14", point: "30")
 }
