@@ -12,8 +12,10 @@ struct CardComponent: View {
         VStack {
             HStack {
                 Image(systemName: "pencil")
+                    .padding()
                 Spacer()
                 Image(systemName: "trash")
+                    .padding()
             }
             Image(systemName: "person.crop.circle")
             Text("Relaxing way office")
@@ -48,7 +50,10 @@ struct CardComponent: View {
                 Text("View detail")
             }
         }
-        .border(Color.black, width: 1)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color.gray, lineWidth: 1)
+        )
         .padding()
     }
 }

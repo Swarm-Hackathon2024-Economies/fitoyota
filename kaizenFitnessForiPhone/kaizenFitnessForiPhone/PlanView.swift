@@ -26,7 +26,7 @@ struct PlanView: View {
                 
                 Spacer()
             }
-            Image("card1")
+            CardComponent()
         }
     }
 }
