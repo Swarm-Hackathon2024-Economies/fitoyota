@@ -41,13 +41,19 @@ struct CardComponent: View {
             Button {
                 
             } label: {
-                Image(systemName: "paperplane")
-                Text("Send to my car")
+                HStack {
+                    Image(systemName: "paperplane")
+                    Text("Send to my car")
+                }
+                .primaryButtonStyle()
             }
             Button {
                 
             } label: {
-                Text("View detail")
+                HStack {
+                    Text("View detail")                    
+                }
+                .secondaryButtonStyle()
             }
         }
         .overlay(
