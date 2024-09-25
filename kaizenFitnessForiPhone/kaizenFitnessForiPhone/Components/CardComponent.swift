@@ -10,50 +10,58 @@ import SwiftUI
 struct CardComponent: View {
     var body: some View {
         VStack {
-            HStack {
-                Image(systemName: "pencil")
-                    .padding()
-                Spacer()
-                Image(systemName: "trash")
-                    .padding()
-            }
-            Image(systemName: "person.crop.circle")
-            Text("Relaxing way office")
-            Text("Relax")
-            Image(systemName: "figure.yoga")
-            HStack {
-                VStack {
-                    Image(systemName: "mappin.circle")
-                    Text("9.32")
-                    Text("miles")
-                }
-                VStack {
-                    Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
-                    Text("14")
-                    Text("minutes")
-                }
-                VStack {
-                    Image(systemName: "heart.fill")
-                    Text("30")
-                    Text("point")
-                }
-            }
-            Button {
-                
-            } label: {
+            VStack {
                 HStack {
-                    Image(systemName: "paperplane")
-                    Text("Send to my car")
+                    Image(systemName: "pencil")
+                        .padding()
+                    Spacer()
+                    Image(systemName: "trash")
+                        .padding()
                 }
-                .primaryButtonStyle()
+                Image(systemName: "person.crop.circle")
+                Text("Relaxing way office")
+                Text("TMNA")
+                    .padding(.bottom, 10)
             }
-            Button {
-                
-            } label: {
+            .background(Color(red: 1, green: 0.37, blue: 0.23, opacity: 0.7))
+            VStack {
+                Text("Relax")
+                Image(systemName: "figure.yoga")
                 HStack {
-                    Text("View detail")                    
+                    VStack {
+                        Image(systemName: "mappin.circle")
+                        Text("9.32")
+                        Text("miles")
+                    }
+                    VStack {
+                        Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
+                        Text("14")
+                        Text("minutes")
+                    }
+                    VStack {
+                        Image(systemName: "heart.fill")
+                        Text("30")
+                        Text("point")
+                    }
                 }
-                .secondaryButtonStyle()
+                Button {
+                    
+                } label: {
+                    HStack {
+                        Image(systemName: "paperplane")
+                        Text("Send to my car")
+                    }
+                    .primaryButtonStyle()
+                }
+                Button {
+                    
+                } label: {
+                    HStack {
+                        Text("View detail")
+                    }
+                    .secondaryButtonStyle()
+                }
+                .padding(.bottom, 20)
             }
         }
         .overlay(
