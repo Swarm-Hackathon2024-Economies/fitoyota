@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isPresentMenu: Bool = false
+    
     var body: some View {
-        VStack {            
+        VStack {
             TabView {
                 PlanView()
                     .tabItem {
@@ -30,6 +32,9 @@ struct ContentView: View {
                     .tabItem {
                         VStack {
                             Image(systemName: "plus.circle.fill")
+                                .onTapGesture {
+                                    isPresentMenu = true
+                                }
                         }
                     }
                 Recommend()
@@ -46,6 +51,9 @@ struct ContentView: View {
                             Text("My Page")
                         }
                     }
+            }
+            .fullScreenCover(isPresented: $isPresentMenu) {
+                SetDestinationView()
             }
         }
     }
