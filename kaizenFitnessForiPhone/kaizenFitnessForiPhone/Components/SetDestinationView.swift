@@ -16,12 +16,37 @@ struct SetDestinationView: View {
     
     
     var body: some View {
-        VStack {
-            Text("1.SetDestination")
-            TextField("キーワード", text: $inputText, prompt: Text("キーワードを入力してください"))
-            Map(position: $cameraPosition){
-                Marker(displaySearchKey, coordinate: targetCoordinate)
+        NavigationStack {
+            VStack {
+                TextField("キーワード", text: $inputText, prompt: Text("キーワードを入力してください"))
+                Map(position: $cameraPosition){
+                    Marker(displaySearchKey, coordinate: targetCoordinate)
+                }
             }
+            .padding()
+            
+            VStack {
+                Text("Toyota Mortor North America - Headquarters")
+                HStack {
+                    Image(systemName: "location.fill")
+                    Text("9.32")
+                        .bold()
+                    Text("miles")
+                    Image(systemName: "fitness.timer")
+                    Text("14")
+                        .bold()
+                    Text("minutes")
+                }
+            }
+            
+            NavigationLink {
+                SelectActivityView()
+            } label: {
+                Text("next")
+                    .secondaryButtonStyle()
+            }
+            .navigationTitle("1.SetDestination")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

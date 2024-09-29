@@ -32,9 +32,6 @@ struct ContentView: View {
                     .tabItem {
                         VStack {
                             Image(systemName: "plus.circle.fill")
-                                .onTapGesture {
-                                    isPresentMenu = true
-                                }
                         }
                     }
                 Recommend()
@@ -51,9 +48,6 @@ struct ContentView: View {
                             Text("My Page")
                         }
                     }
-            }
-            .fullScreenCover(isPresented: $isPresentMenu) {
-                SetDestinationView()
             }
         }
     }

@@ -9,6 +9,8 @@ struct PlusButton: View {
     @State private var visibleRegion: MKCoordinateRegion?
     @State private var selectedResult: MKMapItem?
     var body: some View {
+        VStack {
+        
         Map(position: $position, selection: $selectedResult) {
             UserAnnotation(anchor: .top) { userLocation in
                 EmptyView()
@@ -65,6 +67,10 @@ struct PlusButton: View {
         .onMapCameraChange { context in
             visibleRegion = context.region
             visibleRegion?.span = .init(latitudeDelta: 0.0125, longitudeDelta: 0.0125)
+        }
+        SetDestinationView()
+            .toolbar(.hidden, for: .tabBar)
+            
         }
     }
     private func searchLocations(searchText: String) async -> [MKMapItem] {
