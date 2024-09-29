@@ -1,16 +1,9 @@
-//
-//  PlanView.swift
-//  kaizenFitnessForiPhone
-//
-//  Created by takuya on 9/24/24.
-//
-
 import SwiftUI
 
 struct PlanView: View {
+    @EnvironmentObject var exerciseList: ExerciseList
     @State var currentPage: Int = 1
-
-    let totalPages = 2
+    @State var totalPages: Int = 1
 
     var body: some View {
         VStack {
@@ -31,17 +24,23 @@ struct PlanView: View {
                 Spacer()
             }
             TabView(selection: $currentPage) {
-                CardComponent(menu: "Relax", mile: "9.32", minute: "14", point: "30")
-                CardComponent(menu: "Relax", mile: "9.32", minute: "14", point: "30")
+                ForEach(exerciseList.exercises, id: \.id) {exercise in
+                    CardComponent(menu: exercise.menu, mile: exercise.mile, minute: exercise.minute, point: exercise.point)
+                }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .gesture(DragGesture().onEnded({ value in
                 if value.translation.width < 0 && currentPage < totalPages {
-                    currentPage += 1
+                    self.currentPage += 1
+                    print("now:\(self.currentPage)")
                 } else if value.translation.width > 0 && currentPage > 1 {
-                    currentPage -= 1
+                    self.currentPage -= 1
+                    print("now:\(self.currentPage)")
                 }
             }))
+            .onAppear {
+                self.totalPages = exerciseList.exercises.count
+            }
 
             HStack(spacing: 8) {
                 ForEach(1...totalPages, id: \.self) { page in
@@ -58,4 +57,5 @@ struct PlanView: View {
 
 #Preview {
     PlanView()
+        .environmentObject(ExerciseList())
 }

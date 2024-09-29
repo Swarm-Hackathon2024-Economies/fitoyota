@@ -1,17 +1,13 @@
-//
-//  kaizenFitnessForiPhoneApp.swift
-//  kaizenFitnessForiPhone
-//
-//  Created by takuya on 9/24/24.
-//
-
 import SwiftUI
 
 @main
 struct kaizenFitnessForiPhoneApp: App {
+    @StateObject private var exerciseList = ExerciseList()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(exerciseList)
         }
     }
 }
