@@ -1,10 +1,3 @@
-//
-//  ConfirmView.swift
-//  kaizenFitnessForiPhone
-//
-//  Created by takuya on 9/26/24.
-//
-
 import SwiftUI
 
 struct ConfirmView: View {

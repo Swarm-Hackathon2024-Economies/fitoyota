@@ -1,15 +1,8 @@
-//
-//  ContentView.swift
-//  kaizenFitnessForiPhone
-//
-//  Created by takuya on 9/24/24.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     @State var isPresentMenu: Bool = false
-    
+
     var body: some View {
         VStack {
             TabView {
@@ -20,6 +13,7 @@ struct ContentView: View {
                             Text("Plan")
                         }
                         .foregroundColor(.red)
+
                     }
                 Activities()
                     .tabItem {
@@ -52,6 +46,17 @@ struct ContentView: View {
         }
     }
 }
+//
+//struct CustomEnvironmentKey: EnvironmentKey {
+//    static let defaultValue: FitnessPlan = FitnessPlan(title: "", type: .relax, duration: .init(min: 0, max: 1), effectiveBodyParts: [.arm], musicTitle: "")
+//}
+//
+//extension EnvironmentValues {
+//    var customValue: FitnessPlan {
+//        get { self[CustomEnvironmentKey.self] }
+//        set { self[CustomEnvironmentKey.self] = FitnessPlan(title: "", type: .relax, duration: .init(min: 0, max: 1), effectiveBodyParts: [.arm], musicTitle: "") }
+//    }
+//}
 
 #Preview {
     ContentView()

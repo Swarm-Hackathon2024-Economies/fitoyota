@@ -1,10 +1,3 @@
-//
-//  CardComponent.swift
-//  kaizenFitnessForiPhone
-//
-//  Created by takuya on 9/25/24.
-//
-
 import SwiftUI
 
 struct CardComponent: View {
@@ -36,8 +29,6 @@ struct CardComponent: View {
                 bottomTrailingRadius: 0,
                 topTrailingRadius: 16
             ))
-
-
 
             VStack(spacing: 10) {
                 Text(self.menu)
@@ -80,7 +71,6 @@ struct CardComponent: View {
                     }
                     .secondaryButtonStyle()
                 }
-                .padding(.bottom, 20)
             }
         }
         .overlay(

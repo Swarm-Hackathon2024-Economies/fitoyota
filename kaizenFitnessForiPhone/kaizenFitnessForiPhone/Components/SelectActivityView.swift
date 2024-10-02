@@ -1,80 +1,40 @@
-//
-//  SelectActivityView.swift
-//  kaizenFitnessForiPhone
-//
-//  Created by takuya on 9/26/24.
-//
-
 import SwiftUI
 
 struct SelectActivityView: View {
-    @State var currentPage1: Int = 1
-    @State var currentPage2: Int = 1
-    @State var currentPage3: Int = 1
+    @EnvironmentObject var selectedFitnessPlan: SelectedFitnessPlan
+    @State var currentPage: Int = 1
+    @State private var isActive = false
 
-    let totalPages1 = 2
-    let totalPages2 = 2
-    let totalPages3 = 2
-    
+    let totalPages: Int = 2
+
     var body: some View {
-        NavigationLink {
-            SelectedActivityView()
-        } label: {
+        ScrollView {
             VStack {
-                Text("SelectActivityView")
-                    .frame(alignment: .leading)
-                    .padding()
-                TabView(selection: $currentPage1) {
-                    Image("sampleStretch")
+                ForEach(fitnessPlans) { plan in
+                    NavigationLink(destination: SelectedActivityView(planData: plan), isActive: $isActive) {
+                        Button(plan.title) {
+                            selectedFitnessPlan.data = plan
+                            self.isActive = true
+                        }
+                        .frame(alignment: .leading)
                         .padding()
-                    Image("sampleStretch")
-                        .padding()
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .gesture(DragGesture().onEnded({ value in
-                    if value.translation.width < 0 && currentPage1 < totalPages1 {
-                        currentPage1 += 1
-                    } else if value.translation.width > 0 && currentPage1 > 1 {
-                        currentPage1 -= 1
                     }
-                }))
-               
-                    
-                Text("Relax")
-                    .frame(alignment: .leading)
-                    .padding()
-                TabView(selection: $currentPage1) {
-                    Image("sampleRelax")
-                        .padding()
-                    Image("sampleRelax")
-                        .padding()
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .gesture(DragGesture().onEnded({ value in
-                    if value.translation.width < 0 && currentPage1 < totalPages1 {
-                        currentPage1 += 1
-                    } else if value.translation.width > 0 && currentPage1 > 1 {
-                        currentPage1 -= 1
+                    TabView(selection: $currentPage) {
+                        Image("sample\(plan.type.rawValue)")
+                            .padding()
+                        Image("sample\(plan.type.rawValue)")
+                            .padding()
                     }
-                }))
-                
-                Text("Stress relief")
-                    .frame(alignment: .leading)
-                    .padding()
-                TabView(selection: $currentPage1) {
-                    Image("sampleStressrelief")
-                        .padding()
-                    Image("sampleStressrelief")
-                        .padding()
+                    .frame(minHeight: 100)
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                    .gesture(DragGesture().onEnded({ value in
+                        if value.translation.width < 0 && currentPage < totalPages {
+                            currentPage += 1
+                        } else if value.translation.width > 0 && currentPage > 1 {
+                            currentPage -= 1
+                        }
+                    }))
                 }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .gesture(DragGesture().onEnded({ value in
-                    if value.translation.width < 0 && currentPage1 < totalPages1 {
-                        currentPage1 += 1
-                    } else if value.translation.width > 0 && currentPage1 > 1 {
-                        currentPage1 -= 1
-                    }
-                }))
             }
         }
         .navigationTitle("2.SelectActivityView")

@@ -1,16 +1,9 @@
-//
-//  SetDestinationView.swift
-//  kaizenFitnessForiPhone
-//
-//  Created by takuya on 9/25/24.
-//
-
 import SwiftUI
 import MapKit
 
 struct SetDestinationView: View {
     @State var inputText: String = ""
-    @State var targetCoordinate = CLLocationCoordinate2D()
+    @State var targetCoordinate = CLLocationCoordinate2D(latitude: 35.681382, longitude: 139.76707)
     @State var cameraPosition: MapCameraPosition = .automatic
     @State var displaySearchKey: String = "東京駅"
     
@@ -26,7 +19,7 @@ struct SetDestinationView: View {
             .padding()
             
             VStack {
-                Text("Toyota Mortor North America - Headquarters")
+                Text("Toyota Motor North America - Headquarters")
                 HStack {
                     Image(systemName: "location.fill")
                     Text("9.32")
