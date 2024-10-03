@@ -2,7 +2,6 @@ import SwiftUI
 
 struct SelectedActivityView: View {
     @EnvironmentObject var selectedFitnessPlan: SelectedFitnessPlan
-//    @State var title: String
     var planData: FitnessPlan
 
     init(planData: FitnessPlan) {

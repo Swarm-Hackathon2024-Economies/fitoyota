@@ -2,8 +2,8 @@ import SwiftUI
 
 struct SelectActivityView: View {
     @EnvironmentObject var selectedFitnessPlan: SelectedFitnessPlan
+    @State private var activePlanID: String? = nil
     @State var currentPage: Int = 1
-    @State private var isActive = false
 
     let totalPages: Int = 2
 
@@ -11,10 +11,14 @@ struct SelectActivityView: View {
         ScrollView {
             VStack {
                 ForEach(fitnessPlans) { plan in
-                    NavigationLink(destination: SelectedActivityView(planData: plan), isActive: $isActive) {
+                    NavigationLink(
+                        destination: SelectedActivityView(planData: plan),
+                        tag: plan.id.description,
+                        selection: $activePlanID
+                    ) {
                         Button(plan.title) {
                             selectedFitnessPlan.data = plan
-                            self.isActive = true
+                            self.activePlanID = plan.id.description
                         }
                         .frame(alignment: .leading)
                         .padding()
@@ -40,6 +44,7 @@ struct SelectActivityView: View {
         .navigationTitle("2.SelectActivityView")
     }
 }
+
 
 #Preview {
     SelectActivityView()
